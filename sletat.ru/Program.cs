@@ -173,9 +173,16 @@ namespace sletat.ru
             new AccountService().AddMeMoney(1000);
 
             //Q9
-            //Deadlock
+            //HomeController.Index() - Deadlock
             //ConfigureAwait(false) для библиотечного кода или (лучше) не блокировать вызов библиотечного кода,
             //тогда отработает 300 мс
+
+            //а в консольном приложении этот же код отработае без Deadlock
+            var service = new SomeService();
+            int start = DateTime.Now.Millisecond;
+            service.DoSomeJobAsync().Wait();
+            int stop = DateTime.Now.Millisecond;
+            Console.WriteLine(stop - start);
         }
     }
 }

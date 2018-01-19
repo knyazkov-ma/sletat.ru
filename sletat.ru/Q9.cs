@@ -1,4 +1,7 @@
-﻿namespace sletat.ru
+﻿using System.Threading;
+using System.Threading.Tasks;
+
+namespace sletat.ru
 {
     //public class HomeController : Controller
     //{
@@ -21,15 +24,14 @@
     //        ViewBag.TotalTime = stop - start;
     //        return View();
     //    }
-
-    //    public class SomeService
-    //    {
-    //        public async Task DoSomeJobAsync()
-    //        {
-    //            await Task.Delay(200)/*1.ConfigureAwait(false)*/;
-    //            Thread.Sleep(100);
-    //        }
-    //    }
-
     //}
+
+    public class SomeService
+    {
+        public async Task DoSomeJobAsync()
+        {
+            await Task.Delay(200)/*1.ConfigureAwait(false)*/;
+            Thread.Sleep(100);
+        }
+    }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace sletat.ru
@@ -30,7 +31,9 @@ namespace sletat.ru
     {
         public async Task DoSomeJobAsync()
         {
+            Console.WriteLine("2. DoSomeJobAsync {0}", Thread.CurrentThread.ManagedThreadId);
             await Task.Delay(200)/*1.ConfigureAwait(false)*/;
+            Console.WriteLine("3. DoSomeJobAsync {0}", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(100);
         }
     }

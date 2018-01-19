@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using sletat.ru.HotelServiceReference;
+using System.Threading;
 
 namespace sletat.ru
 {
@@ -180,7 +181,12 @@ namespace sletat.ru
             //а в консольном приложении этот же код отработае без Deadlock
             var service = new SomeService();
             int start = DateTime.Now.Millisecond;
+
+            Console.WriteLine("1. Main {0}", Thread.CurrentThread.ManagedThreadId);
             service.DoSomeJobAsync().Wait();
+
+            Console.WriteLine("4. Main {0}", Thread.CurrentThread.ManagedThreadId);
+
             int stop = DateTime.Now.Millisecond;
             Console.WriteLine(stop - start);
         }
